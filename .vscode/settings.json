@@ -19,7 +19,6 @@
 		"package-lock.json": true,
 		"README.md": true,
 		"src/app.d.ts": true,
-		"postcss.config.cjs": true,
 		".gitignore": true
 	},
 	"hide-files.files": [
@@ -32,7 +31,6 @@
 		"package-lock.json",
 		"README.md",
 		"src/app.d.ts",
-		"postcss.config.cjs",
 		".gitignore"
 	]
 }
