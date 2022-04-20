@@ -3,17 +3,20 @@
 	import Input from '../lib/Input.svelte';
 	import Button from '../lib/Button.svelte';
 
-	let name = 'lucas',
-		email = 'lucas@email.com',
+	let name,
+		email,
 		password,
-		isLoading = false;
+		isLoading = false,
+		errorValidations = [];
 
 	async function register() {
 		isLoading = true;
 		try {
 			const response = await axios.post('/users/register', { name, email, password });
 		} catch (error) {
-			console.log(error.response);
+			error.response.data.validationErrors.forEach((err) => {
+				errorValidations = [...errorValidations, err.message];
+			});
 			isLoading = false;
 		}
 	}
@@ -38,6 +41,14 @@
 
 		<Button type="submit" className="mt-8 min-w-[20ch]" {isLoading}>Cadastrar</Button>
 	</form>
+
+	{#if errorValidations.length > 0}
+		<div class="mt-8">
+			{#each errorValidations as item}
+				<p class="text-sm text-red-500 text-center ">{item}</p>
+			{/each}
+		</div>
+	{/if}
 
 	<p class="text-center mt-10">Já possui uma conta? <a href="/login">Entre aqui</a></p>
 </div>

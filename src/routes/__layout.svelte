@@ -2,6 +2,8 @@
 	import '../tailwind.css';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/env';
+	import Header from '$lib/Header.svelte';
+	import Footer from '$lib/Footer.svelte';
 
 	let isAuth = false;
 
@@ -16,12 +18,12 @@
 
 {#if isAuth}
 	<div class="min-h-screen grid grid-rows-[auto_1fr_auto]">
-		<header class="bg-slate-300 p-4">header</header>
+		<Header />
 
-		<main>
+		<main class="px-4 container mx-auto">
 			<slot><!-- optional fallback --></slot>
 		</main>
 
-		<footer class="bg-slate-300 p-4">footer</footer>
+		<Footer />
 	</div>
 {/if}

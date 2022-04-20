@@ -1,7 +1,7 @@
 <script>
 	import Icon from '@iconify/svelte';
 
-	export let type;
+	export let type = 'button';
 	export let className = '';
 	export let full = false;
 	export let isDisabled = false;

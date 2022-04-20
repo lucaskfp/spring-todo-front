@@ -13,7 +13,6 @@
 		isLoading = true;
 		try {
 			const response = await axios.post('/login', { email, password });
-			console.log(response.data);
 			localStorage.setItem('token', response.data.token);
 			goto('/');
 		} catch (error) {
@@ -41,7 +40,7 @@
 	</form>
 
 	{#if isError}
-		<p>Ops! Parece que você digitou algo errado.</p>
+		<p class="text-sm text-red-500 text-center mt-8">Ops! Parece que você digitou algo errado.</p>
 	{/if}
 
 	<p class="text-center mt-10">Ainda não possui uma conta? <a href="/register">Criar aqui</a></p>
